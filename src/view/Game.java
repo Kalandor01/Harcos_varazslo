@@ -5,6 +5,14 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import model.Play_field;
+import model.Player;
+
 /**
  *
  * @author Gigabyte
@@ -14,8 +22,30 @@ public class Game extends javax.swing.JFrame {
     /**
      * Creates new form Game
      */
+    Play_field game;
+    Player[] players;
+    
     public Game() {
         initComponents();
+        game = new Play_field(5, 1, 2);
+        players = game.getPlayers();
+        make_field();
+    }
+    
+    private void make_field() {
+        //panel
+        play_field = new javax.swing.JPanel();
+        play_field.setLayout(new java.awt.GridLayout());
+        for (int x = 0; x < players.length; x++) {
+            JPanel player_panel = new JPanel();
+            JButton player = new JButton();
+            player.setText(Character.toString(players[x].getLetter()));
+            player.setHorizontalTextPosition(JButton.CENTER);
+            player.setVerticalTextPosition(JButton.CENTER);
+            player.setForeground(Color.BLACK);
+            player_panel.add(player);
+            play_field.add(player_panel);
+        }
     }
 
     /**
@@ -27,17 +57,27 @@ public class Game extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        play_field = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        play_field.setLayout(new java.awt.GridLayout(1, 5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(play_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(play_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(109, 109, 109))
         );
 
         pack();
@@ -70,14 +110,9 @@ public class Game extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Game().setVisible(true);
-            }
-        });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel play_field;
     // End of variables declaration//GEN-END:variables
+
 }

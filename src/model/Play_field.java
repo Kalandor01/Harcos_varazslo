@@ -28,10 +28,11 @@ public class Play_field
     
     public boolean step() {
         //anyone alive
-        int alive = 0;
-        for (Player player : players) {
-            if(player.isAlive())
+        int p = 0, alive = 0;
+        while (p < players.length && alive < 2) {
+            if(players[p].isAlive())
                 alive++;
+            p++;
         }
         if(alive > 1) {
             int[] p_this_pos;
@@ -64,7 +65,18 @@ public class Play_field
                     }
                 }
             }
-            return true;
+            //still alive?
+            p = 0;
+            alive = 0;
+            while (p < players.length && alive < 2) {
+                if(players[p].isAlive())
+                    alive++;
+                p++;
+            }
+            if(alive > 1)
+                return true;
+            else
+                return false;
         }
         else
             return false;
@@ -80,7 +92,7 @@ public class Play_field
             if(p_num == players.length)
                 System.out.print("_");
             else
-                System.out.print(players[p_num].name);
+                System.out.print(players[p_num].letter);
         }
         System.out.println("|\n");
     }
@@ -99,4 +111,14 @@ public class Play_field
                 System.out.println(player);
         }
     }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+    
+    
 }

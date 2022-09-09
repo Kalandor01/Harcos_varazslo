@@ -2,6 +2,7 @@ package model;
 public class Player
 {
     protected String name;
+    protected char letter;
     protected int life;
     protected int attack;
     protected int pos;
@@ -15,6 +16,7 @@ public class Player
     }
     public Player(int board_size, String name, int life, int attack, int pos) {
         this.name = name;
+        this.letter = name.charAt(0);
         this.life = life;
         this.attack = attack;
         this.pos = pos;
@@ -60,9 +62,17 @@ public class Player
         return pos;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public char getLetter() {
+        return letter;
+    }
+
     @Override
     public String toString() {
-        return "Player: " + name + ", hp: " + life + ", attack=" + attack + ", pos=" + pos;
+        return name + ": " + letter + ", hp: " + life + ", attack=" + attack + ", pos=" + pos;
     }
     
 }

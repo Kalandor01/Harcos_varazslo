@@ -1,7 +1,8 @@
 package main;
 
 //import java.util.Random;
-import model.Play_field;
+//import model.Play_field;
+import view.Game;
 
 public class Harcos_varazslo
 {
@@ -125,19 +126,27 @@ public class Harcos_varazslo
     
     public static void main(String[] args) throws InterruptedException
     {
-        int delay = 200;
-        Play_field game = new Play_field(9, 2, 3);
-        boolean alive = true;
-        game.write_players();
-        while(alive) {
-            game.write_board();
-            //game.write_players();
-            game.move_players();
-            alive = game.step();
-            Thread.sleep(delay);
-        }
-        game.write_board();
-        game.write_alive_players();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Game().setVisible(true);
+            }
+        });
+        
+//        int delay = 200;
+//        Play_field game = new Play_field(3, 1, 1);
+//        boolean alive = true;
+//        game.write_players();
+//        while(alive) {
+//            game.write_board();
+//            game.move_players();
+//            alive = game.step();
+////            game.write_players();
+//            Thread.sleep(delay);
+//        }
+//        game.write_board();
+//        game.write_alive_players();
+        
+        
 //        //var
 //        Random r = new Random();
 //        boolean shrink = true;
