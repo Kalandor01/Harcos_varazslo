@@ -2,21 +2,25 @@ package model;
 public class Player
 {
     protected String name;
-    protected char letter;
+    protected String letter;
     protected int life;
     protected int attack;
     protected int pos;
     protected int board_size;
     
     public Player(int board_size, String name) {
-        this(board_size, name, (int)(Math.random() * 10 + 3), (int)(Math.random() * 5 + 1));
+        this(board_size, name, Character.toString(name.charAt(0)), (int)(Math.random() * 10 + 3), (int)(Math.random() * 5 + 1));
     }
-    public Player(int board_size, String name, int life, int attack) {
-        this(board_size, name, life, attack, (int)(Math.random() * board_size));
+    
+    public Player(int board_size, String name, String letter) {
+        this(board_size, name, letter, (int)(Math.random() * 10 + 3), (int)(Math.random() * 5 + 1));
     }
-    public Player(int board_size, String name, int life, int attack, int pos) {
+    public Player(int board_size, String name, String letter, int life, int attack) {
+        this(board_size, name, letter, life, attack, (int)(Math.random() * board_size));
+    }
+    public Player(int board_size, String name, String letter, int life, int attack, int pos) {
         this.name = name;
-        this.letter = name.charAt(0);
+        this.letter = letter;
         this.life = life;
         this.attack = attack;
         this.pos = pos;
@@ -66,7 +70,7 @@ public class Player
         return name;
     }
 
-    public char getLetter() {
+    public String getLetter() {
         return letter;
     }
 

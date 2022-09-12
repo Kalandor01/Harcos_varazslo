@@ -23,10 +23,10 @@ public class Game extends javax.swing.JFrame {
      * Creates new form Game
      */
     //settings
-    int delay = 50;
-    int fiels_size = 15;
-    int fighters = 5;
-    int wizards = 5;
+    int delay = 200;
+    int fiels_size = 3;
+    int fighters = 1;
+    int wizards = 1;
     //vars
     boolean alive = true;
     boolean updating = false;
@@ -115,11 +115,11 @@ public class Game extends javax.swing.JFrame {
     //            System.out.printf("%s: %s: %s, %s, %s\n", x, players[x].getPos(), life, player, attack);
                 System.out.printf("%s: %s, %s, %s\n", players[x].getLetter(), players[x].getLife(), players[x].getPos(), players[x].getAttack());
                 //setup hp
-                life.setText(Integer.toString(players[x].getLife()));
+                life.setText(Integer.toString(players[x].getLife()) + "❤️");
                 //setup player
-                player.setText(Character.toString(players[x].getLetter()));
+                player.setText(players[x].getLetter());
                 //setup attack
-                attack.setText(Integer.toString(players[x].getAttack()));
+                attack.setText(Integer.toString(players[x].getAttack()) + "⚔️");
             }
         }
         System.out.println();
